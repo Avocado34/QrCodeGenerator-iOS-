@@ -1,6 +1,11 @@
 QrCode Generator
 ================
 
+Download
+-----------
+https://apps.apple.com/kr/app/qrcode-generator-custom/id1535370230?l=en
+<br>
+
 Screenshots
 ------------
 ### iPhone<br>
