@@ -44,6 +44,8 @@
 		337168B82780C57C26BD1197 /* Pods_QRcodeGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRcodeGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7471A3A0D8222FCB9CC883 /* Pods_QRcodeGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRcodeGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2E86AE9F1E93D5DC42915F /* Pods-QRcodeGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodeGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRcodeGenerator/Pods-QRcodeGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		8E20B2F62538CC7D007C986C /* ja-JP */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ja-JP"; path = "ja-JP.lproj/Main.strings"; sourceTree = "<group>"; };
+		8E20B2FA2538CE30007C986C /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/Main.strings"; sourceTree = "<group>"; };
 		8E640DBE2528B872007FA9A0 /* QRcodeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRcodeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E640DC12528B873007FA9A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E640DC32528B873007FA9A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +263,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"ja-JP",
+				"ko-KR",
 			);
 			mainGroup = 8E640DB52528B872007FA9A0;
 			productRefGroup = 8E640DBF2528B872007FA9A0 /* Products */;
@@ -452,6 +456,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E640DC82528B873007FA9A0 /* Base */,
+				8E20B2F62538CC7D007C986C /* ja-JP */,
+				8E20B2FA2538CE30007C986C /* ko-KR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -592,12 +598,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -612,12 +621,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

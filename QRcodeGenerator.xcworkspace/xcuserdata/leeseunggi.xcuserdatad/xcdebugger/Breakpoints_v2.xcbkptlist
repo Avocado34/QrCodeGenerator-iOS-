@@ -14,25 +14,9 @@
             filePath = "QRcodeGenerator/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "captureQrCode()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "813D2FCC-D823-4D01-A4C2-005ABF8151AB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QRcodeGenerator/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "interstitial(_:didFailToReceiveAdWithError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,15 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3998172297943713~4181951306</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow access to the camera?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>QrCode를 저장하시려면 앨범 접근 권한이 필요합니다,.</string>
-    <key>GADApplicationIdentifier</key>
-    <string>ca-app-pub-3998172297943713~4181951306</string>
+	<string>To save QrCode, you need to allow permission for the album.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

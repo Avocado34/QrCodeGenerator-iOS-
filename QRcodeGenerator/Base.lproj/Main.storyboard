@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yik-ih-gAC">
-                                <rect key="frame" x="0.0" y="200" width="414" height="696"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="yik-ih-gAC">
+                                <rect key="frame" x="0.0" y="190" width="414" height="706"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEz-vr-ddr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
@@ -194,7 +194,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="8h3-1W-bfO" firstAttribute="leading" secondItem="RSy-ia-5je" secondAttribute="trailing" constant="15" id="21z-nT-j1W"/>
                                                                     <constraint firstItem="RSy-ia-5je" firstAttribute="centerY" secondItem="Qvi-xH-ZTZ" secondAttribute="centerY" constant="-0.5" id="4y4-dX-i1X"/>
@@ -311,7 +311,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="FzD-G4-9Rq" firstAttribute="leading" secondItem="L5A-YG-L14" secondAttribute="trailing" constant="20" id="9YL-0U-Cpj"/>
                                                                     <constraint firstItem="Sj5-no-e39" firstAttribute="centerY" secondItem="Snf-VW-hYt" secondAttribute="centerY" constant="-0.5" id="Ay5-LI-Zuf"/>
@@ -440,7 +440,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="cVS-1B-HPl" firstAttribute="centerY" secondItem="Z4D-Pq-VLN" secondAttribute="centerY" id="6ow-2P-4k8"/>
                                                                     <constraint firstItem="yqa-Ql-z8v" firstAttribute="centerY" secondItem="Z4D-Pq-VLN" secondAttribute="centerY" id="Kwz-pF-VZV"/>
@@ -514,7 +514,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PkL-Wp-Dxz" userLabel="Appbar">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEr-3f-m5T">
                                         <rect key="frame" x="30" y="50" width="141.5" height="72"/>
@@ -554,7 +554,7 @@ Generator</string>
                                 <color key="backgroundColor" name="AppbarColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Yt5-7q-6sx" secondAttribute="trailing" constant="30" id="1ro-kp-zAb"/>
-                                    <constraint firstAttribute="height" constant="230" id="GJp-7q-IpC"/>
+                                    <constraint firstAttribute="height" constant="220" id="GJp-7q-IpC"/>
                                     <constraint firstItem="GEr-3f-m5T" firstAttribute="top" secondItem="PkL-Wp-Dxz" secondAttribute="top" constant="50" id="K8h-Jk-zkh"/>
                                     <constraint firstItem="Yt5-7q-6sx" firstAttribute="top" secondItem="PkL-Wp-Dxz" secondAttribute="top" constant="60" id="NAc-MH-9nx"/>
                                     <constraint firstAttribute="trailing" secondItem="ZYm-no-T6b" secondAttribute="trailing" constant="30" id="hiq-p3-ugi"/>
@@ -662,7 +662,7 @@ Generator</string>
                                                     <constraint firstAttribute="height" constant="300" id="6O5-5k-0O6"/>
                                                 </constraints>
                                                 <string key="text"> QrCode Generator
-v 1.0.0
+v 1.1.0
 
 
 

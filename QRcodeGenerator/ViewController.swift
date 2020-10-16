@@ -12,10 +12,10 @@ import Toast
 import GoogleMobileAds
 
 
+
 class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDelegate {
     
-    private let ADMOB_ID = "ca-app-pub-3998172297943713~4181951306"
-    private let ADMOB_UNIT_ID = "ca-app-pub-3998172297943713/8320824098"
+    private let ADMOB_UNIT_ID = "ca-app-pub-3998172297943713/4841787663"
 
     @IBOutlet weak var appbar: UIView!
     @IBOutlet weak var appbarTitle: UILabel!
@@ -76,8 +76,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
     private var qrCodeForegroundColor = UIColor.black
     
     private var interstitial: GADInterstitial!
-    private var isShareButtonClicked = false
-    private var isSaveButtonClicked = false
     
     // Background Color Picker
     private var selectedColor = UIColor.systemTeal
@@ -243,7 +241,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
     }
     func setGoogleAdMob(){
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        interstitial = GADInterstitial(adUnitID: ADMOB_ID)
+        interstitial = GADInterstitial(adUnitID: ADMOB_UNIT_ID)
         let request = GADRequest()
         interstitial.load(request)
         interstitial.delegate = self
@@ -272,17 +270,18 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
         
         let sourceString = qrCodeSourceString.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let generator = QRCodeGenerator()
-        generator.correctionLevel = .H
+        let qrCodeGenerator = QRCodeGenerator()
+        qrCodeGenerator.correctionLevel = .H
         
         // set color
-        generator.backgroundColor = qrCodeBackgroundColor
-        generator.foregroundColor = qrCodeForegroundColor
+        qrCodeGenerator.backgroundColor = qrCodeBackgroundColor
+        qrCodeGenerator.foregroundColor = qrCodeForegroundColor
         
         // generate QRcode
-        let qrCode: QRImage = generator.createImage(value: sourceString,size: CGSize(width: 120, height: 120)) ?? UIImage(named: "QRcode")!
+        let mQrCode = qrCodeGenerator.createImage(value: sourceString, size: CGSize(width: resultQRcodeImage.bounds.width, height: resultQRcodeImage.bounds.height), encoding: String.Encoding.utf8)
         
-        resultQRcodeImage.image = qrCode
+
+        resultQRcodeImage.image = mQrCode
     }
     func showColorPicker(){
         if #available(iOS 14.0, *){
@@ -303,8 +302,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
     
     // Export Action
     func saveQrCode(){
-        isSaveButtonClicked = false
-        
         // request Album Permission
         if PHPhotoLibrary.authorizationStatus() != .authorized{
             PHPhotoLibrary.requestAuthorization { (status) in
@@ -356,8 +353,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
         }
     }
     func shareQrCode(){
-        isShareButtonClicked = false
-        
         if let qrCode = captureQrCode(){
             let imageToShare = [qrCode]
             let activityVC = UIActivityViewController(activityItems: imageToShare as [Any], applicationActivities: nil)
@@ -388,54 +383,33 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
         
         return inter
     }
-    func showAdMobWithAction(){
+    func showAdMob(){
         if interstitial.isReady{
             interstitial.present(fromRootViewController: self)
             interstitial = createAd()
             interstitial.delegate = self
+            
+            self.view.makeToast("exception not occurred")
         }else{
-            // DO action on exception
-            if isShareButtonClicked{
-                shareQrCode()
-            }else if isSaveButtonClicked{
-                saveQrCode()
-            }
+            self.view.makeToast("exception occurred")
         }
     }
     
-    
-    // AdMob delegate
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        if isShareButtonClicked{
-            shareQrCode()
-        }else if isSaveButtonClicked{
-            saveQrCode()
-        }
-    }
-    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        // DO action on exception
-        if isShareButtonClicked{
-            shareQrCode()
-        }else if isSaveButtonClicked{
-            saveQrCode()
-        }
-    }
     
     
     // Generate Button Action
     @IBAction func generateQRcodeAction(_ sender: Any) {
         qrCodeSourceString = TFstring.text ?? ""
         generateQRCode()
+        showAdMob()
     }
     
     // Export Actions
     @IBAction func saveButtonAction(_ sender: Any) {
-        isSaveButtonClicked = true
-        showAdMobWithAction()
+        saveQrCode()
     }
     @IBAction func shareButtonAction(_ sender: Any) {
-        isShareButtonClicked = true
-        showAdMobWithAction()
+        shareQrCode()
     }
     
     // Background Color Board

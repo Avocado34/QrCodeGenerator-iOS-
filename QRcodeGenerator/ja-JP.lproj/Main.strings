@@ -3,13 +3,13 @@
 "3I5-qD-QZv.text" = "Border Style2  by FreePik from Flaticon https://www.flaticon.com/authors/freepik";
 
 /* Class = "UILabel"; text = "Background Color"; ObjectID = "5G8-eD-Ch5"; */
-"5G8-eD-Ch5.text" = "배경 색";
+"5G8-eD-Ch5.text" = "背景色";
 
 /* Class = "UITextView"; text = "Border Style4  by FreePik from Flaticon https://www.flaticon.com/authors/freepik"; ObjectID = "5Oz-cQ-aK8"; */
 "5Oz-cQ-aK8.text" = "Border Style4  by FreePik from Flaticon https://www.flaticon.com/authors/freepik";
 
 /* Class = "UIButton"; normalTitle = "Share"; ObjectID = "9L7-TP-pXb"; */
-"9L7-TP-pXb.normalTitle" = "공유";
+"9L7-TP-pXb.normalTitle" = "シェア";
 
 /* Class = "UITextView"; text = "QrCode Icon  by bqlqn from Flaticon https://www.flaticon.com/authors/bqlqn"; ObjectID = "Ehl-fa-sPa"; */
 "Ehl-fa-sPa.text" = "QrCode Icon  by bqlqn from Flaticon https://www.flaticon.com/authors/bqlqn";
@@ -36,19 +36,19 @@
 "LpC-tF-vMq.text" = "Copyright © 2020 LeeSeunggi - MuffinLabs.\nAll rights reserved.";
 
 /* Class = "UILabel"; text = "Sorry, It's Not supported string"; ObjectID = "Rb0-eB-CBO"; */
-"Rb0-eB-CBO.text" = "죄송합니다, 지원하지 않는 텍스트 입니다.";
+"Rb0-eB-CBO.text" = "すみません、サポートされていない文字です。";
 
 /* Class = "UIButton"; normalTitle = "Genrate !"; ObjectID = "Xbo-Vz-TFy"; */
-"Xbo-Vz-TFy.normalTitle" = "생성 !";
+"Xbo-Vz-TFy.normalTitle" = "つくる！";
 
 /* Class = "UILabel"; text = "Foreground Color"; ObjectID = "YOj-vT-FBw"; */
-"YOj-vT-FBw.text" = "Qr코드 색";
+"YOj-vT-FBw.text" = "Qrコード色";
 
 /* Class = "UITextField"; placeholder = "Link or Text you want to make with QRcode"; ObjectID = "ZYm-no-T6b"; */
-"ZYm-no-T6b.placeholder" = "QR코드로 만들 링크나 텍스트를 입력하세요";
+"ZYm-no-T6b.placeholder" = "QRコードで作りたいリンクとかテキストを入力してください。";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "cXf-Mh-mkp"; */
-"cXf-Mh-mkp.normalTitle" = "저장";
+"cXf-Mh-mkp.normalTitle" = "保存";
 
 /* Class = "UILabel"; text = "Border style"; ObjectID = "i27-gn-hkT"; */
-"i27-gn-hkT.text" = "테두리 스타일";
+"i27-gn-hkT.text" = "ボーダースタイル";
