@@ -290,7 +290,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
             colorPicker.selectedColor = selectedColor
             present(colorPicker, animated: true)
         }else{
-            self.view.makeToast("iOS 14.0 이상에서만 지원하는 기능입니다.")
+            self.view.makeToast("Color pallete is supported only on iOS 14.0 and later.")
         }
         
     }
@@ -388,10 +388,8 @@ class ViewController: UIViewController, UITextFieldDelegate, GADInterstitialDele
             interstitial.present(fromRootViewController: self)
             interstitial = createAd()
             interstitial.delegate = self
-            
-            self.view.makeToast("exception not occurred")
         }else{
-            self.view.makeToast("exception occurred")
+            print("admob is preparing")
         }
     }
     
