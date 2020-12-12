@@ -23,8 +23,8 @@ This app convert Url, Text or whatever you want to QrCode
 <br>
 
 ## Why I made this?
-+ Ad is sucks (but my app has ads to =) )<br>
-+ Design is sucks<br>
++ Other app's Ad is sucks (but my app has ads to =) )<br>
++ Other app's Design is sucks<br>
 <br>
 
 ## Threshold
