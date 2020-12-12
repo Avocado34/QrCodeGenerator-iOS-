@@ -18,20 +18,17 @@ Screenshots
 <br>
 
 ## What is this?
-이 앱은 사용자가 원하는 Url 이나 Text를 QrCode로 변환해주는 앱입니다.
+This app convert Url, Text or whatever you want to QrCode
 
 <br>
 
 ## Why I made this?
-+ 광고 떡칠인 앱이 대부분<br>
-+ 디자인이 무슨 갤2 나오던 때 출시되던 앱 디자인 같아서 사용하기 꺼려짐 -> 디자인이 구림<br>
-+ 또한 (스캐너 + 생성기) 이런식이 대부분이여서 정체성을 하나로만 하는 앱이 있었으면 좋겠어서 만들게 됨.
-
++ Ad is sucks (but my app has ads to =) )<br>
++ Design is sucks<br>
 <br>
 
 ## Threshold
-QrCode 변환 텍스트가 영어 밖에 지원이 안 됨(특수문자는 가능)<br>
-이 부분은 더 나은 QrCode 생성 플러그인을 찾던 직접 QrCode 생성 알고리즘을 구현하던 할 것임.
+Now utf-8 is supported<br>
 
 
 
