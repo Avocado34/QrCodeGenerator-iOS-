@@ -8,7 +8,6 @@ target 'QRcodeGenerator' do
   # Pods for QRcodeGenerator
   pod "QRCoder"
   pod 'Toast', '~> 4.0.0'
-  pod 'Google-Mobile-Ads-SDK'
   
 
   target 'QRcodeGeneratorTests' do

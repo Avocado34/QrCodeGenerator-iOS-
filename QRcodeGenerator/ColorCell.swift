@@ -1,0 +1,31 @@
+//
+//  ColorCell.swift
+//  QRcodeGenerator
+//
+//  Created by 이승기 on 2021/04/13.
+//
+
+import UIKit
+
+
+protocol CustomColorCollectionViewDelegate: AnyObject{
+    func didTapColorButton(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath)
+}
+
+class ColorCell: UICollectionViewCell{
+    
+    private var collectionView: UICollectionView?
+    private var indexPath: IndexPath?
+    weak var delegate: CustomColorCollectionViewDelegate?
+    
+    func configure(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath){
+        self.collectionView = collectionView
+        self.indexPath = indexPath
+    }
+    
+    @IBOutlet weak var colorButton: UIButton!
+    
+    @IBAction func didTapButton(){
+        delegate?.didTapColorButton(self.collectionView!, cellForItemAt: self.indexPath!)
+    }
+}

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		078F3F560A8C14399A141867 /* Pods_QRcodeGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 337168B82780C57C26BD1197 /* Pods_QRcodeGenerator.framework */; };
 		2E9FC18D4BA3092A27A3D33A /* Pods_QRcodeGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7471A3A0D8222FCB9CC883 /* Pods_QRcodeGeneratorTests.framework */; };
+		76BEEBB726259B7100642001 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEEBB626259B7100642001 /* ColorCell.swift */; };
+		76BEEBBC26259B9B00642001 /* BorderStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */; };
 		8E640DC22528B873007FA9A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC12528B873007FA9A0 /* AppDelegate.swift */; };
 		8E640DC42528B873007FA9A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC32528B873007FA9A0 /* SceneDelegate.swift */; };
 		8E640DC62528B873007FA9A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC52528B873007FA9A0 /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 		2E7757E988EE7AF3EF954B12 /* Pods-QRcodeGenerator-QRcodeGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodeGenerator-QRcodeGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRcodeGenerator-QRcodeGeneratorUITests/Pods-QRcodeGenerator-QRcodeGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		337168B82780C57C26BD1197 /* Pods_QRcodeGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRcodeGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7471A3A0D8222FCB9CC883 /* Pods_QRcodeGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRcodeGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76BEEBB626259B7100642001 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderStyleCell.swift; sourceTree = "<group>"; };
 		8D2E86AE9F1E93D5DC42915F /* Pods-QRcodeGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodeGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRcodeGenerator/Pods-QRcodeGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		8E20B2F62538CC7D007C986C /* ja-JP */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ja-JP"; path = "ja-JP.lproj/Main.strings"; sourceTree = "<group>"; };
 		8E20B2FA2538CE30007C986C /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				8E640DCC2528B873007FA9A0 /* LaunchScreen.storyboard */,
 				8E640DCF2528B873007FA9A0 /* Info.plist */,
 				8EC308A4252FA52E00CD6A2E /* CreditViewController.swift */,
+				76BEEBB626259B7100642001 /* ColorCell.swift */,
+				76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */,
 			);
 			path = QRcodeGenerator;
 			sourceTree = "<group>";
@@ -416,6 +422,8 @@
 				8E640DC62528B873007FA9A0 /* ViewController.swift in Sources */,
 				8E640DC22528B873007FA9A0 /* AppDelegate.swift in Sources */,
 				8E640DC42528B873007FA9A0 /* SceneDelegate.swift in Sources */,
+				76BEEBBC26259B9B00642001 /* BorderStyleCell.swift in Sources */,
+				76BEEBB726259B7100642001 /* ColorCell.swift in Sources */,
 				8EC308A5252FA52E00CD6A2E /* CreditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -606,7 +614,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -621,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -629,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
