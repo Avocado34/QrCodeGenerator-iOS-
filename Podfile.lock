@@ -1,20 +1,34 @@
 PODS:
   - QRCoder (1.1.0)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
   - Toast (4.0.0)
 
 DEPENDENCIES:
   - QRCoder
+  - RxCocoa
+  - RxSwift
   - Toast (~> 4.0.0)
 
 SPEC REPOS:
   trunk:
     - QRCoder
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Toast
 
 SPEC CHECKSUMS:
   QRCoder: cbd2bee531cc86d286df7942334cfed94c803ae4
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 192825df7c722e59e97801a1b8f934d8a281f09d
+PODFILE CHECKSUM: 8ff95b63fb90fb15f879a2332a97cd3c6b3001c5
 
 COCOAPODS: 1.10.1

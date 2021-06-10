@@ -11,6 +11,8 @@
 		2E9FC18D4BA3092A27A3D33A /* Pods_QRcodeGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7471A3A0D8222FCB9CC883 /* Pods_QRcodeGeneratorTests.framework */; };
 		76BEEBB726259B7100642001 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEEBB626259B7100642001 /* ColorCell.swift */; };
 		76BEEBBC26259B9B00642001 /* BorderStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */; };
+		76ECD33A26720CBC002BC6D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76ECD33C26720CBC002BC6D7 /* Localizable.strings */; };
+		76ECD34026720F6A002BC6D7 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECD33F26720F6A002BC6D7 /* GlobalExtensions.swift */; };
 		8E640DC22528B873007FA9A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC12528B873007FA9A0 /* AppDelegate.swift */; };
 		8E640DC42528B873007FA9A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC32528B873007FA9A0 /* SceneDelegate.swift */; };
 		8E640DC62528B873007FA9A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E640DC52528B873007FA9A0 /* ViewController.swift */; };
@@ -47,9 +49,15 @@
 		4C7471A3A0D8222FCB9CC883 /* Pods_QRcodeGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRcodeGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BEEBB626259B7100642001 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderStyleCell.swift; sourceTree = "<group>"; };
+		76ECD334267209CB002BC6D7 /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/Main.strings"; sourceTree = "<group>"; };
+		76ECD335267209CC002BC6D7 /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		76ECD33626720A03002BC6D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		76ECD33726720A04002BC6D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		76ECD33B26720CBC002BC6D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		76ECD33D26720CCE002BC6D7 /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		76ECD33E26720CCE002BC6D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		76ECD33F26720F6A002BC6D7 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		8D2E86AE9F1E93D5DC42915F /* Pods-QRcodeGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodeGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRcodeGenerator/Pods-QRcodeGenerator.release.xcconfig"; sourceTree = "<group>"; };
-		8E20B2F62538CC7D007C986C /* ja-JP */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ja-JP"; path = "ja-JP.lproj/Main.strings"; sourceTree = "<group>"; };
-		8E20B2FA2538CE30007C986C /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/Main.strings"; sourceTree = "<group>"; };
 		8E640DBE2528B872007FA9A0 /* QRcodeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRcodeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E640DC12528B873007FA9A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E640DC32528B873007FA9A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +120,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		76ECD341267214F1002BC6D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E640DC72528B873007FA9A0 /* Main.storyboard */,
+				8E640DCC2528B873007FA9A0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76ECD342267214FD002BC6D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD33F26720F6A002BC6D7 /* GlobalExtensions.swift */,
+				76ECD33C26720CBC002BC6D7 /* Localizable.strings */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		76ECD34326721506002BC6D7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E640DC52528B873007FA9A0 /* ViewController.swift */,
+				76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */,
+				8EC308A4252FA52E00CD6A2E /* CreditViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8E640DB52528B872007FA9A0 = {
 			isa = PBXGroup;
 			children = (
@@ -137,16 +173,14 @@
 		8E640DC02528B872007FA9A0 /* QRcodeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				76ECD342267214FD002BC6D7 /* Model */,
+				76ECD341267214F1002BC6D7 /* View */,
+				76ECD34326721506002BC6D7 /* Controller */,
 				8E640DC12528B873007FA9A0 /* AppDelegate.swift */,
 				8E640DC32528B873007FA9A0 /* SceneDelegate.swift */,
-				8E640DC72528B873007FA9A0 /* Main.storyboard */,
-				8E640DC52528B873007FA9A0 /* ViewController.swift */,
 				8E640DCA2528B873007FA9A0 /* Assets.xcassets */,
-				8E640DCC2528B873007FA9A0 /* LaunchScreen.storyboard */,
 				8E640DCF2528B873007FA9A0 /* Info.plist */,
-				8EC308A4252FA52E00CD6A2E /* CreditViewController.swift */,
 				76BEEBB626259B7100642001 /* ColorCell.swift */,
-				76BEEBBB26259B9B00642001 /* BorderStyleCell.swift */,
 			);
 			path = QRcodeGenerator;
 			sourceTree = "<group>";
@@ -269,8 +303,8 @@
 			knownRegions = (
 				en,
 				Base,
-				"ja-JP",
 				"ko-KR",
+				ja,
 			);
 			mainGroup = 8E640DB52528B872007FA9A0;
 			productRefGroup = 8E640DBF2528B872007FA9A0 /* Products */;
@@ -290,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E640DCE2528B873007FA9A0 /* LaunchScreen.storyboard in Resources */,
+				76ECD33A26720CBC002BC6D7 /* Localizable.strings in Resources */,
 				8E640DCB2528B873007FA9A0 /* Assets.xcassets in Resources */,
 				8E640DC92528B873007FA9A0 /* Main.storyboard in Resources */,
 			);
@@ -425,6 +460,7 @@
 				76BEEBBC26259B9B00642001 /* BorderStyleCell.swift in Sources */,
 				76BEEBB726259B7100642001 /* ColorCell.swift in Sources */,
 				8EC308A5252FA52E00CD6A2E /* CreditViewController.swift in Sources */,
+				76ECD34026720F6A002BC6D7 /* GlobalExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,12 +496,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		76ECD33C26720CBC002BC6D7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ECD33B26720CBC002BC6D7 /* ja */,
+				76ECD33D26720CCE002BC6D7 /* ko-KR */,
+				76ECD33E26720CCE002BC6D7 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8E640DC72528B873007FA9A0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8E640DC82528B873007FA9A0 /* Base */,
-				8E20B2F62538CC7D007C986C /* ja-JP */,
-				8E20B2FA2538CE30007C986C /* ko-KR */,
+				76ECD334267209CB002BC6D7 /* ko-KR */,
+				76ECD33626720A03002BC6D7 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -474,6 +520,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E640DCD2528B873007FA9A0 /* Base */,
+				76ECD335267209CC002BC6D7 /* ko-KR */,
+				76ECD33726720A04002BC6D7 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -606,7 +654,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -614,7 +662,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -629,7 +677,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 497P4L97SV;
 				INFOPLIST_FILE = QRcodeGenerator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -637,7 +685,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MuffinLabs.QRcodeGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  QRcodeGenerator
+
+  Created by 이승기 on 2021/06/10.
+  
+*/
+
+"SaveAlertTitle" = "저장";
+"SaveAlertMessage" = "앨범에 저장하시겠습니까?";
+
+
+"AlbumAuthTitle" = "권한";
+"AlbumAuthMessage" = "앨범 접근 권한이 없습니다. 설정에서 권한을 허용해주세요";

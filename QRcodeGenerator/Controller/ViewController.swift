@@ -9,9 +9,14 @@ import UIKit
 import QRCoder
 import Photos
 import Toast
+import RxSwift
+import RxCocoa
 
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    // MARK: - Declarations
+    var disposeBag = DisposeBag()
     
     var backgroundColorArr = Array<UIColor>()
     var foregroundColorArr = Array<UIColor>()
@@ -21,51 +26,62 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var foregroundColorCollectionView: UICollectionView!
     @IBOutlet weak var borderStyleCollectionView: UICollectionView!
     
-    
     @IBOutlet weak var appbarView: UIView!
-    @IBOutlet weak var TFstring: UITextField!
-    @IBOutlet weak var BTNgenerate: UIButton!
-    @IBOutlet weak var resultQRcodeImage: UIImageView!
+    @IBOutlet weak var qrCodeContentView: UIView!
+    @IBOutlet weak var sourceStringTextfield: UITextField!
+    @IBOutlet weak var resultQrCodeImageView: UIImageView!
     
     @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var QRcodeBoard: UIView!
+    @IBOutlet weak var qrCodeBoardView: UIView!
     
-    @IBOutlet weak var exportBoard: UIView!
-    @IBOutlet weak var shareButton: UIButton!
-    
-    @IBOutlet weak var backgroundColorBoard: UIView!
-    @IBOutlet weak var foregroundColorBoard: UIView!
-    
+    @IBOutlet weak var bgColorSelectorView: UIView!
     @IBOutlet weak var bgColorPalleteButton: UIButton!
+    
+    @IBOutlet weak var fgColorSelectorView: UIView!
     @IBOutlet weak var fgColorPalleteButton: UIButton!
     
+    @IBOutlet weak var qrCodeBorderImageView: UIImageView!
+    @IBOutlet weak var borderStyleSelectorView: UIView!
+    @IBOutlet weak var clearBorderStyleButton: UIButton!
     
-    @IBOutlet weak var border: UIImageView!
-    @IBOutlet weak var borderStyleBoard: UIView!
+    // export buttons
+    @IBOutlet weak var exportBoardView: UIView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
+    // default values
     private var qrCodeSourceString = ""
     private var qrCodeBackgroundColor = UIColor.white
     private var qrCodeForegroundColor = UIColor.black
     
-    
-    // Background Color Picker
+    // Color Picker
     private var selectedColor = UIColor.systemTeal
     private var colorPicker = UIColorPickerViewController()
     
-    // Foreground Color Picker
+    // to detect which button called
     private var isBgColorSelecting = true
     
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupBarButton()
-        
         initData()
-        initDesign()
+        initView()
         initInstance()
+        initEventListener()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("Height : \(qrCodeBoardView.frame.height)")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    // MARK: - Initializations
     func initData(){
         backgroundColorArr.append(UIColor(named: "BackgroundColorSelection1")!)
         backgroundColorArr.append(UIColor(named: "BackgroundColorSelection2")!)
@@ -87,74 +103,122 @@ class ViewController: UIViewController, UITextFieldDelegate {
         borderStyleArr.append(UIImage(named: "BorderStyle4")!)
     }
     
-    func initDesign(){
+    func initView(){
+        
         // Appbar
         setRadius(view: appbarView, radius: 35)
+        setShadow(view: appbarView, opacity: 0.2, shadowRadius: 15)
         appbarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         
         // Source data string TextField
-        TFstring.backgroundColor = UIColor.white
-        setRadius(view: TFstring, radius: 20)
-        // set padding
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.TFstring.frame.height))
-        TFstring.leftView = paddingView
-        TFstring.rightView = paddingView
-        TFstring.leftViewMode = .always
+        sourceStringTextfield.backgroundColor = UIColor.white
+        setRadius(view: sourceStringTextfield, radius: 20)
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.sourceStringTextfield.frame.height))
+        sourceStringTextfield.leftView = paddingView
+        sourceStringTextfield.rightView = paddingView
+        sourceStringTextfield.leftViewMode = .always
         
         
         // result Image
-        setRadius(view: resultQRcodeImage, radius: 7)
-        
-        // Generate Button
-        setRadius(view: BTNgenerate, radius: 25)
-        setShadow(view: BTNgenerate, opacity: 0.5, shadowRadius: 10)
-        
+        setRadius(view: resultQrCodeImageView, radius: 7)
         
         // QRcode Board
-        setRadius(view: QRcodeBoard, radius: 15)
-        setShadow(view: QRcodeBoard, opacity: 0.2, shadowRadius: 15)
+        setRadius(view: qrCodeBoardView, radius: 15)
+        setShadow(view: qrCodeBoardView, opacity: 0.2, shadowRadius: 15)
         
-        // Option Board
-        setRadius(view: exportBoard, radius: 15)
-        setShadow(view: exportBoard, opacity: 0.2, shadowRadius: 15)
+        // export baord view
+        setRadius(view: exportBoardView, radius: 15)
+        setShadow(view: exportBoardView, opacity: 0.2, shadowRadius: 15)
         
         // BakcgroundColor Board
-        setRadius(view: backgroundColorBoard, radius: 15)
-        setShadow(view: backgroundColorBoard, opacity: 0.2, shadowRadius: 15)
+        setRadius(view: bgColorSelectorView, radius: 15)
+        setShadow(view: bgColorSelectorView, opacity: 0.2, shadowRadius: 15)
         
         // ForegroundColor Board
-        setRadius(view: foregroundColorBoard, radius: 15)
-        setShadow(view: foregroundColorBoard, opacity: 0.2, shadowRadius: 15)
+        setRadius(view: fgColorSelectorView, radius: 15)
+        setShadow(view: fgColorSelectorView, opacity: 0.2, shadowRadius: 15)
         
-        //BorderStyle Board
-        setRadius(view: borderStyleBoard, radius: 15)
-        setShadow(view: borderStyleBoard, opacity: 0.2, shadowRadius: 15)
+        //BorderStyle Selector view
+        setRadius(view: borderStyleSelectorView, radius: 15)
+        setShadow(view: borderStyleSelectorView, opacity: 0.2, shadowRadius: 15)
         
         // Background Color picker Button
         setShadow(view: bgColorPalleteButton, opacity: 0.8, shadowRadius: 2)
         
         // Foreground Color picker Button
         setShadow(view: fgColorPalleteButton, opacity: 0.8, shadowRadius: 2)
+        
     }
     
     func initInstance(){
-        TFstring.delegate = self
+        
+        // source string textfield
+        sourceStringTextfield.delegate = self
+        sourceStringTextfield.returnKeyType = .done
+        
+        // color picker
         colorPicker.delegate = self
         
+        // background color selector
         backgrondColorCollectionView.delegate = self
         backgrondColorCollectionView.dataSource = self
         
+        // foreground color selector
         foregroundColorCollectionView.delegate = self
         foregroundColorCollectionView.dataSource = self
         
+        // qrcode border style selector
         borderStyleCollectionView.delegate = self
         borderStyleCollectionView.dataSource = self
     }
     
+    func initEventListener(){
+        
+        // source string input event
+        sourceStringTextfield.rx.text
+            .orEmpty
+            .bind(with: self){ vc,text in
+                vc.generateQRCode(text)
+            }
+            .disposed(by: disposeBag)
+        
+        // save button naction
+        saveButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.saveQrCode()
+            }.disposed(by: disposeBag)
+        
+        // share button action
+        shareButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.shareQrCode()
+            }.disposed(by: disposeBag)
+        
+        // background color picker button action
+        bgColorPalleteButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.isBgColorSelecting = true
+                vc.showColorPicker(vc.qrCodeBackgroundColor)
+            }.disposed(by: disposeBag)
+        
+        // foreground color picker button action
+        fgColorPalleteButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.isBgColorSelecting = false
+                vc.showColorPicker(vc.qrCodeForegroundColor)
+            }.disposed(by: disposeBag)
+        
+        // clear border style button action
+        clearBorderStyleButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.qrCodeBorderImageView.isHidden = true
+            }.disposed(by: disposeBag)
+    }
     
     
     
+    // MARK: - Methods
     func setShadow(view: UIView, opacity: Float, shadowRadius: CGFloat){
         view.layer.shadowColor = UIColor.gray.cgColor
         view.layer.shadowOffset = .zero
@@ -171,11 +235,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     // Generate QRcode
-    func generateQRCode(){
-        border.image = border.image?.withRenderingMode(.alwaysTemplate)
-        border.tintColor = qrCodeForegroundColor
-        
-        let sourceString = qrCodeSourceString.trimmingCharacters(in: .whitespacesAndNewlines)
+    func generateQRCode(_ sourceString: String){
+        qrCodeBorderImageView.image = qrCodeBorderImageView.image?.withRenderingMode(.alwaysTemplate)
+        qrCodeBorderImageView.tintColor = qrCodeForegroundColor
         
         let qrCodeGenerator = QRCodeGenerator()
         qrCodeGenerator.correctionLevel = .H
@@ -185,32 +247,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
         qrCodeGenerator.foregroundColor = qrCodeForegroundColor
         
         // generate QRcode
-        let mQrCode = qrCodeGenerator.createImage(value: sourceString, size: CGSize(width: resultQRcodeImage.bounds.width, height: resultQRcodeImage.bounds.height), encoding: String.Encoding.utf8)
-        
+        let mQrCode = qrCodeGenerator.createImage(value: sourceString, size: CGSize(width: resultQrCodeImageView.bounds.width, height: resultQrCodeImageView.bounds.height), encoding: String.Encoding.utf8)
 
-        resultQRcodeImage.image = mQrCode
+        resultQrCodeImageView.image = mQrCode
     }
-    func showColorPicker(){
+    func showColorPicker(_ defaultColor: UIColor?){
         if #available(iOS 14.0, *){
             colorPicker.supportsAlpha = true
             
-            colorPicker.selectedColor = selectedColor
+            // init defualt color
+            if let defaultColor = defaultColor{
+                colorPicker.selectedColor = defaultColor
+            }
+            
             present(colorPicker, animated: true)
         }else{
             self.view.makeToast("Color pallete is supported only on iOS 14.0 and later.")
         }
         
     }
-    func setupBarButton(){
-        _ = UIAction(title: "Pick Color"){ _ in
-            self.showColorPicker()
-        }
-    }
     
     // Export Action
     func saveQrCode(){
         // request Album Permission
         if PHPhotoLibrary.authorizationStatus() != .authorized{
+            // doesn't have aceess to album auth
+            
             PHPhotoLibrary.requestAuthorization { (status) in
                // system permission request dialog
                 if status == .authorized{
@@ -218,47 +280,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
+            // Present No Album auth alert
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Access album permission", message: "To save QrCode, you need to allow permission for access album.", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    // Open permission setting
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                                return
-                            }
-
-                            if UIApplication.shared.canOpenURL(settingsUrl) {
-                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                    print("Settings opened: \(success)") // Prints true
-                                })
-                            }
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                    print("cancel button clicked")
-                }
-                alert.addAction(cancelAction)
-                alert.addAction(defaultAction)
-                self.present(alert, animated: true, completion: nil)
+                self.presentNoAlbumAuthAlert()
             }
-        }else{
-            // Save Alert
+        }else{ // Album Access auth is permitted
+            // Present Save Alert
             DispatchQueue.main.async {
-                let dialog = UIAlertController(title: "Save", message: "Save the QrCode to the album?", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    if let qrCode = self.captureQrCode(){
-                        UIImageWriteToSavedPhotosAlbum(qrCode, nil, nil, nil)
-                    }else{
-                        self.view.makeToast("Please try again")
-                    }
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                    // cancel Action
-                }
-                dialog.addAction(cancelAction)
-                dialog.addAction(defaultAction)
-                self.present(dialog, animated: true, completion: nil)
+                self.presentSaveToAlbumAlert()
             }
         }
     }
+    
     func shareQrCode(){
         if let qrCode = captureQrCode(){
             let imageToShare = [qrCode]
@@ -278,76 +311,86 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     func captureQrCode() -> UIImage?{
-        UIGraphicsBeginImageContextWithOptions(QRcodeBoard.frame.size, false, 0.0)
-        QRcodeBoard.layer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        // to remove corner radius on image
+        setRadius(view: qrCodeBoardView, radius: 0)
+        
+        UIGraphicsBeginImageContextWithOptions(qrCodeBoardView.frame.size, false, 10)
+        qrCodeBoardView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let qrCode = UIGraphicsGetImageFromCurrentImageContext()
+        
+        setRadius(view: qrCodeBoardView, radius: 15)
         
         return qrCode!
     }
     
     
-    
-    // Generate Button Action
-    @IBAction func generateQRcodeAction(_ sender: Any) {
-        qrCodeSourceString = TFstring.text ?? ""
-        generateQRCode()
-    }
-    
-    // Export Actions
-    @IBAction func saveButtonAction(_ sender: Any) {
-        saveQrCode()
-    }
-    @IBAction func shareButtonAction(_ sender: Any) {
-        shareQrCode()
-    }
-    
-    // Background Color Board
-    @IBAction func bgColorPickerAction(_ sender: Any) {
-        isBgColorSelecting = true
-        showColorPicker()
-    }
-    
-    // Foreground Color Board
-    @IBAction func fgColorPickerAction(_ sender: Any) {
-        isBgColorSelecting = false
-        showColorPicker()
+    func presentSaveToAlbumAlert(){
+        let dialog = UIAlertController(title: "SaveAlertTitle".localized, message: "SaveAlertMessage".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let qrCode = self.captureQrCode(){
+                UIImageWriteToSavedPhotosAlbum(qrCode, nil, nil, nil)
+            }else{
+                self.view.makeToast("Please try again")
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // cancel Action
+        }
+        dialog.addAction(cancelAction)
+        dialog.addAction(defaultAction)
+        present(dialog, animated: true, completion: nil)
     }
     
     
-    // Border Style Board
-    @IBAction func clearBorderStyleButtonAction(_ sender: Any) {
-        border.isHidden = true
-    }
-    
-    // TextField Delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
+    func presentNoAlbumAuthAlert(){
+        let alert = UIAlertController(title: "AlbumAuthTitle".localized, message: "AlbumAuthMessage".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // Open permission setting
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("cancel button clicked")
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
 
 
+// MARK: - Extensions
+
+// Color picer view delegate
 extension ViewController: UIColorPickerViewControllerDelegate{
+    
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         selectedColor = viewController.selectedColor
         
         print("color changed")
         if isBgColorSelecting {
-            QRcodeBoard.backgroundColor = selectedColor
+            qrCodeBoardView.backgroundColor = selectedColor
             qrCodeBackgroundColor = selectedColor
         }else{
             qrCodeForegroundColor = selectedColor
         }
-        generateQRCode()
+    
+        // notify to textfield to generate new qrCode
+        sourceStringTextfield.sendActions(for: .valueChanged)
         
-    }
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        print("did dismiss function")
     }
 }
 
-
+// color selector collectionview delegate
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, CustomColorCollectionViewDelegate, CustomBorderCollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -411,28 +454,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func didTapColorButton(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) {
         switch collectionView {
         case backgrondColorCollectionView:
-            QRcodeBoard.backgroundColor = backgroundColorArr[indexPath.row]
+            qrCodeBoardView.backgroundColor = backgroundColorArr[indexPath.row]
             qrCodeBackgroundColor = backgroundColorArr[indexPath.row]
-            
-            generateQRCode()
-            
-            break;
+            break
         case foregroundColorCollectionView:
             qrCodeForegroundColor = foregroundColorArr[indexPath.row]
-            border.tintColor = foregroundColorArr[indexPath.row]
-            
-            generateQRCode()
-            
-            break;
+            qrCodeBorderImageView.tintColor = foregroundColorArr[indexPath.row]
+            break
         default:
-            break;
+            return
         }
+        
+        // notify to textfield to generate new qrCode
+        sourceStringTextfield.sendActions(for: .valueChanged)
     }
     
     func didTapBorderStyle(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) {
-        border.isHidden = false
-        border.image = borderStyleArr[indexPath.row]
+        qrCodeBorderImageView.isHidden = false
+        qrCodeBorderImageView.image = borderStyleArr[indexPath.row]
         
-        generateQRCode()
+        // notify to textfield to generate new qrCode
+        sourceStringTextfield.sendActions(for: .valueChanged)
     }
 }

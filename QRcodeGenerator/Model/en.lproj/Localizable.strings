@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  QRcodeGenerator
+
+  Created by 이승기 on 2021/06/10.
+  
+*/
+
+
+"SaveAlertTitle" = "Save";
+"SaveAlertMessage" = "Save the QrCode to the album";
+
+"AlbumAuthTitle" = "Authorization";
+"AlbumAuthMessage" = "Access to album is blocked. Please allow permission in settings";
+
