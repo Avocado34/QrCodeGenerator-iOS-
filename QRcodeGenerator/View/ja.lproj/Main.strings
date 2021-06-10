@@ -42,7 +42,7 @@
 "YOj-vT-FBw.text" = "Qrコード色";
 
 /* Class = "UITextField"; placeholder = "Link or Text you want to make with QRcode"; ObjectID = "ZYm-no-T6b"; */
-"ZYm-no-T6b.placeholder" = "Link or Text you want to make with QRcode";
+"ZYm-no-T6b.placeholder" = "qrコードに変換したいリンクやテキストを入力してください";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "cXf-Mh-mkp"; */
 "cXf-Mh-mkp.normalTitle" = "保存";
