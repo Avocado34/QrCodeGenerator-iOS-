@@ -11,6 +11,7 @@ import Photos
 import Toast
 import RxSwift
 import RxCocoa
+import StoreKit
 
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var borderStyleCollectionView: UICollectionView!
     
     @IBOutlet weak var appbarView: UIView!
+    @IBOutlet weak var creditButton: UIButton!
     @IBOutlet weak var qrCodeContentView: UIView!
     @IBOutlet weak var sourceStringTextfield: UITextField!
     @IBOutlet weak var resultQrCodeImageView: UIImageView!
@@ -73,9 +75,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("Height : \(qrCodeBoardView.frame.height)")
+        super.viewDidAppear(true)
+        
     }
     
+    // MARK: - Overrides
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -114,10 +118,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Source data string TextField
         sourceStringTextfield.backgroundColor = UIColor.white
         setRadius(view: sourceStringTextfield, radius: 20)
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.sourceStringTextfield.frame.height))
-        sourceStringTextfield.leftView = paddingView
-        sourceStringTextfield.rightView = paddingView
-        sourceStringTextfield.leftViewMode = .always
+        sourceStringTextfield.addLeftImage(UIImage(named: "QRcode")!, 20)
         
         
         // result Image
@@ -149,6 +150,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Foreground Color picker Button
         setShadow(view: fgColorPalleteButton, opacity: 0.8, shadowRadius: 2)
         
+        // set default qrcode border style
+        qrCodeBorderImageView.image = UIImage()
     }
     
     func initInstance(){
@@ -212,8 +215,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // clear border style button action
         clearBorderStyleButton.rx.tap
             .bind(with: self){ vc,_ in
-                vc.qrCodeBorderImageView.isHidden = true
+                vc.qrCodeBorderImageView.image = UIImage()
             }.disposed(by: disposeBag)
+        
+        
+        // credit button tap action
+        creditButton.rx.tap
+            .bind(with: self){ vc,_ in
+                vc.presentCreditVC()
+            }.disposed(by: disposeBag)
+        
+        
+        // qrCode view tap action
+        qrCodeContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(qrCodeTap(_:))))
+        
+        // observing using app time
+        Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                
+            })
+            .disposed(by: disposeBag)
     }
     
     
@@ -253,7 +274,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     func showColorPicker(_ defaultColor: UIColor?){
         if #available(iOS 14.0, *){
-            colorPicker.supportsAlpha = true
+            colorPicker.supportsAlpha = false
             
             // init defualt color
             if let defaultColor = defaultColor{
@@ -365,6 +386,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    func presentCreditVC(){
+        guard let creditVC = storyboard?.instantiateViewController(identifier: "creditStoryboard") as? CreditViewController else {return}
+        
+        present(creditVC, animated: true, completion: nil)
+    }
+    
+    
+    func presentFullScreenQrCodeVC(){
+        guard let fullScreenQrVC = storyboard?.instantiateViewController(identifier: "fullScreenQrCodeStoryboard") as? FullScreenQrCodeViewController else {return}
+        
+        fullScreenQrVC.modalPresentationStyle = .fullScreen
+        fullScreenQrVC.backgroundColor = qrCodeBackgroundColor
+        fullScreenQrVC.foregroundColor = qrCodeForegroundColor
+        fullScreenQrVC.qrCodeBorderStyle = qrCodeBorderImageView.image
+        fullScreenQrVC.qrCodeImage = resultQrCodeImageView.image
+        
+        present(fullScreenQrVC, animated: true, completion: nil)
+    }
+    
+    
+    func addOneSec(){
+        UserDefaults.standard.setValue(Date(), forKey: "")
+    }
+    
+    
+    @objc
+    func qrCodeTap(_ sender: UITapGestureRecognizer){
+        presentFullScreenQrCodeVC()
+    }
 }
 
 
@@ -470,7 +521,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func didTapBorderStyle(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) {
-        qrCodeBorderImageView.isHidden = false
         qrCodeBorderImageView.image = borderStyleArr[indexPath.row]
         
         // notify to textfield to generate new qrCode

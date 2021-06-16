@@ -10,7 +10,7 @@ target 'QRcodeGenerator' do
   pod 'Toast', '~> 4.0.0'
   pod 'RxSwift'
   pod 'RxCocoa'
-  
+ 
 
   target 'QRcodeGeneratorTests' do
     inherit! :search_paths
