@@ -18,25 +18,24 @@ Screenshots
 <br>
 
 ## What is this?
-This app convert Url, Text or whatever you want to QrCode
+This app makes any Text or link to QrCode
 
 <br>
 
 ## Why I made this?
-+ Other app's Ad is sucks (but my app has ads to =) )<br>
-+ Other app's Design is sucks<br>
++ Other app's ads were so annoying to me<br>
++ Other app's Design was so sucks. I thought it was an Android app💦<br>
 <br>
 
-## Threshold
-Now utf-8 is supported<br>
 
 
 
 <br><br><br><br>
 #### Supported os
-iOS / iPad OS
+iOS / iPad OS (both 14.0+)
 <br>
 #### Used CocoaPods
-> 1. QRCoder (https://cocoapods.org/pods/QRCoder)
-> 2. Toast  (https://cocoapods.org/pods/Toast)
-> 3. Google AdMob (https://developers.google.com/admob/ios/quick-start?hl=ko)
+> 1. QRCoder
+> 2. Toast  
+> 3. RxSiwft
+> 4. RxCocoa
